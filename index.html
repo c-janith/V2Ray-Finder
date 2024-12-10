@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2 Finder - Free V2Ray Links</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --background-color: #0f0c29;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--background-color), #16213e);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        /* Navigation */
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--text-color);
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+            min-height: 500px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 500px;
+            padding-right: 30px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Download Buttons */
+        .download-section {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            gap: 20px;
+        }
+
+        .feature {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 50px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .contact-link i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--background-color);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-wrapper.active {
+                transform: translateX(0);
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+                margin: 20px 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                z-index: 1002;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+            }
+
+            .features {
+                flex-direction: column;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span: nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="V2 Finder Logo" class="logo">
+                <h1>V2 Finder</h1>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Wrapper -->
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#download" class="nav-link">Download</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Welcome to V2 Finder</h2>
+                <p>Your one-stop solution for finding free V2Ray links.</p>
+            </div>
+            <div class="hero-image">
+                <img src="hero-image.png" alt="Hero Image">
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="feature">
+                <h3>Feature 1</h3>
+                <p>Description of feature 1.</p>
+            </div>
+            <div class="feature">
+                <h3>Feature 2</h3>
+                <p>Description of feature 2.</p>
+            </div>
+            <div class="feature">
+                <h3>Feature 3</h3>
+                <p>Description of feature 3.</p>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section">
+            <a href="download-link" class="download-btn">
+                <i class="bi bi-download"></i> Download Now
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Get in Touch</h2>
+            <div class="contact-links">
+                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="contact-link">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" class="contact-link">
+                    <i class="bi bi-telegram"></i> Telegram
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 V2 Finder. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navWrapper = document.querySelector('.nav-wrapper');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navWrapper.classList.toggle('active');
+            });
+
+            // Smooth scrolling and menu close for all screen sizes
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Close mobile menu
+                    menuToggle.classList.remove('active');
+                    navWrapper.classList.remove('active');
+
+                    // Get the target section
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
