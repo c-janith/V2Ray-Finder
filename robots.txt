@@ -33,4 +33,4 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: http://v2rayfinder.work.gd/sitemap.xml
+Sitemap: https://v2rayfinder.work.gd/sitemap.xml
